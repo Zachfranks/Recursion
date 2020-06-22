@@ -25,11 +25,14 @@ public class Main {
         listMnemonics(numberList,reslut);
     }
     static void listMnemonics(ArrayList<Integer> numberList, String reslut){
+
+        //System.out.println("list "+numberList);
+        //System.out.println("result "+reslut);
         if (numberList.size()==0){
          //termation case
             System.out.println(reslut);
         }else {
-            ArrayList<Integer> newNumberList = numberList;
+            ArrayList<Integer> newNumberList = new ArrayList<>(numberList);
             int number = newNumberList.remove(0);
             for (int i =0; i < keys[number].length(); ++i ){
                 String newReslut = reslut + keys[number].charAt(i);
