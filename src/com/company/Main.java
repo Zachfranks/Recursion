@@ -22,22 +22,32 @@ public class Main {
         }
 
         String reslut = new String();
-        listMnemonics(numberList,reslut);
+        ArrayList<String> output = listMnemonics(numberList,reslut);
+
+        System.out.println(output);
+
     }
-    static void listMnemonics(ArrayList<Integer> numberList, String reslut){
+    static ArrayList<String> listMnemonics(ArrayList<Integer> numberList, String reslut){
 
         //System.out.println("list "+numberList);
         //System.out.println("result "+reslut);
+        ArrayList<String> output;
+        output = new ArrayList<>();
+
         if (numberList.size()==0){
          //termation case
-            System.out.println(reslut);
+            //System.out.println(reslut);
+            output.add(reslut);
+
         }else {
             ArrayList<Integer> newNumberList = new ArrayList<>(numberList);
             int number = newNumberList.remove(0);
             for (int i =0; i < keys[number].length(); ++i ){
                 String newReslut = reslut + keys[number].charAt(i);
-                listMnemonics(newNumberList,newReslut);
+                output.addAll( listMnemonics(newNumberList,newReslut));
+
             }
         }
+        return output;
     }
 }
